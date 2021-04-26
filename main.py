@@ -82,12 +82,13 @@ class CsvConverter(QWidget):
 
     def __init__(self):
         super().__init__()
+        if not os.path.isfile('config.ini'):
+            self.config_generator()
         config_parser = configparser.ConfigParser()
         config_parser.read('config.ini', encoding='utf-8')
         self.storage_text = "현재 저장 장소 = " + config_parser['directory']['directory']
         self.storage_label = QLabel(self.storage_text, self)
-        if not os.path.isfile('config.ini'):
-            self.config_generator()
+
         self.datetime = QDateTime.currentDateTime()
         self.dialog = QDialog()
         self.init_ui()
