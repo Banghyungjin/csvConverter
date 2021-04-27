@@ -54,10 +54,12 @@ class CsvConverter(QWidget):
     def select_directory(self):  # 저장 공간 설정
         config_parser = configparser.ConfigParser()
         config_parser.read('config.ini', encoding='utf-8')
-        with open('config.ini', 'w', encoding='utf-8') as configfile:
-            config_parser.set('directory', 'directory', QFileDialog.getExistingDirectory(self, "select Directory"))
-            config_parser.write(configfile)
-        configfile.close()
+        file_loc = QFileDialog.getExistingDirectory(self, "select Directory")
+        if file_loc != '':
+            with open('config.ini', 'w', encoding='utf-8') as configfile:
+                config_parser.set('directory', 'directory', file_loc)
+                config_parser.write(configfile)
+                configfile.close()
         self.storage_label.setText("현재 저장 장소 = " + config_parser['directory']['directory'])
         self.storage_label.repaint()
 

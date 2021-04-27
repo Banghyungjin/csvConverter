@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\Bangh\\PycharmProjects\\pythonProject'],
+             pathex=['C:\\Users\\ad\\Documents\\GitHub\\csvConverter'],
              binaries=[],
              datas=[],
              hiddenimports=[],
