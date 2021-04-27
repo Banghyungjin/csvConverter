@@ -79,6 +79,7 @@ class CsvConverter(QWidget):
             wr = csv.writer(converted_file)
             for element in read_data:
                 read_list = str(element).split(',')
+                read_list[-1] = read_list[-1].replace('\n', '')
                 wr.writerow(read_list)
             converted_file.close()
 
