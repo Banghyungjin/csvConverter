@@ -78,10 +78,10 @@ class CsvConverter(QWidget):
             converted_file = open(out_file, 'w', encoding='utf-8', newline='')
             wr = csv.writer(converted_file)
             for element in read_data:
-                read_list = str(element).split(',')
+                read_list = str(element).split(', ')
                 read_list[-1] = read_list[-1].replace('\n', '')
                 #print(read_list[-1])
-                if read_list[-1] == ' >50K':
+                if read_list[-1] == '>50K':
                     read_list[-1] = 1
                 else:
                     read_list[-1] = 0
