@@ -77,14 +77,17 @@ class CsvConverter(QWidget):
                 os.mkdir(path)
             converted_file = open(out_file, 'w', encoding='utf-8', newline='')
             wr = csv.writer(converted_file)
+
             read_list = ['age','work-class','fnlwgt','education','education-num',
                          'marital-status','occupation','relationship',
                          'race','sex','capital-gain','capital-loss',
                          'hours-per-week','native-country','is_more_than_50K']
             wr.writerow(read_list)
+
             for element in read_data:
-                temp_element = str(element).replace("?", '')
-                read_list = temp_element.split(', ')
+                #temp_element = str(element).replace("?", 'Unknown')
+                #read_list = temp_element.split(', ')
+                read_list = str(element).split(', ')
                 read_list[-1] = read_list[-1].replace('\n', '')
                 #print(read_list[-1])
                 if read_list[-1] == '>50K':
